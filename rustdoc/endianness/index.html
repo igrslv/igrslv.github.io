@@ -12,8 +12,8 @@
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
 
-    
-    
+
+
 </head>
 <body class="rustdoc">
     <!--[if lte IE 8]>
@@ -23,10 +23,10 @@
     </div>
     <![endif]-->
 
-    
+
 
     <nav class="sidebar">
-        
+
         <p class='location'></p><script>window.sidebarCurrent = {name: 'endianness', ty: 'mod', relpath: '../'};</script>
     </nav>
 
@@ -46,39 +46,30 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-0' class='srclink' href='../src/endianness/lib.rs.html#1-267' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-0' class='srclink' href='../src/endianness/lib.rs.html#1-266' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>This crate provides functions to read numbers from a stream of bytes
 either in big-endian or little-endian. Functions return Result type
 instead of panic!.</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
-<p>Read signed 16-bit integers:
-```rust
-use endianness::*;</p>
+<p>Read signed 16-bit integers:</p>
+<div class="highlight highlight-source-rust"><pre><span class="pl-k">let</span> v <span class="pl-k">=</span> vec<span class="pl-k">!</span>[<span class="pl-c1">0</span><span class="pl-k">,</span> <span class="pl-c1">128</span><span class="pl-k">,</span> <span class="pl-c1">128</span><span class="pl-k">,</span> <span class="pl-c1">0</span>]<span class="pl-k">;</span>
 
-<p>let v = vec![0, 128, 128, 0];
-assert_eq!(-32768, read_i16(&amp;v[0..2], ByteOrder::LittleEndian).unwrap());
-assert_eq!(-32768, read_i16(&amp;v[2..4], ByteOrder::BigEndian).unwrap());
-```</p>
+assert_eq<span class="pl-k">!</span>(<span class="pl-k">-</span><span class="pl-c1">32768</span><span class="pl-k">,</span> <span class="pl-c1">read_i16</span>(<span class="pl-k">&amp;</span>v[<span class="pl-c1">0</span><span class="pl-k">..</span><span class="pl-c1">2</span>]<span class="pl-k">,</span> <span class="pl-k">ByteOrder</span><span class="pl-k">::</span><span class="pl-k">LittleEndian</span>)<span class="pl-k">.</span><span class="pl-c1">unwrap</span>())<span class="pl-k">;</span>
+assert_eq<span class="pl-k">!</span>(<span class="pl-k">-</span><span class="pl-c1">32768</span><span class="pl-k">,</span> <span class="pl-c1">read_i16</span>(<span class="pl-k">&amp;</span>v[<span class="pl-c1">2</span><span class="pl-k">..</span><span class="pl-c1">4</span>]<span class="pl-k">,</span> <span class="pl-k">ByteOrder</span><span class="pl-k">::</span><span class="pl-k">BigEndian</span>)<span class="pl-k">.</span><span class="pl-c1">unwrap</span>())<span class="pl-k">;</span></pre></div>
 
-<p>Read a signed 32-bit integer:
-```rust
-use endianness::*;</p>
+<p>Read a signed 32-bit integer:</p>
+<div class="highlight highlight-source-rust"><pre><span class="pl-k">let</span> v <span class="pl-k">=</span> vec<span class="pl-k">!</span>[<span class="pl-c1">0</span><span class="pl-k">,</span> <span class="pl-c1">128</span><span class="pl-k">,</span> <span class="pl-c1">128</span><span class="pl-k">,</span> <span class="pl-c1">0</span>]<span class="pl-k">;</span>
 
-<p>let v = vec![0, 128, 128, 0];
-match read_i32(&amp;v, ByteOrder::LittleEndian) {
-Ok(n) =&gt; println!(&quot;Read value {}&quot;, n), // 8421376
-Err(err) =&gt; println!(&quot;Error: {}&quot;, err),
-}
-```</p>
+<span class="pl-k">match</span> <span class="pl-c1">read_i32</span>(<span class="pl-k">&amp;</span>v<span class="pl-k">,</span> <span class="pl-k">ByteOrder</span><span class="pl-k">::</span><span class="pl-k">LittleEndian</span>) {
+    <span class="pl-k">Ok</span>(n) <span class="pl-k">=&gt;</span> println<span class="pl-k">!</span>(<span class="pl-s">"Read value {}"</span><span class="pl-k">,</span> n)<span class="pl-k">,</span> <span class="pl-c">// 8421376</span>
+    <span class="pl-k">Err</span>(err) <span class="pl-k">=&gt;</span> println<span class="pl-k">!</span>(<span class="pl-s">"Error: {}"</span><span class="pl-k">,</span> err)<span class="pl-k">,</span>
+}</pre></div>
 
-<p>Read a single-precision floating point number:
-```rust
-use endianness::*;</p>
+<p>Read a single-precision floating point number:</p>
+<div class="highlight highlight-source-rust"><pre><span class="pl-k">let</span> v <span class="pl-k">=</span> vec<span class="pl-k">!</span>[<span class="pl-c1">194</span><span class="pl-k">,</span> <span class="pl-c1">255</span><span class="pl-k">,</span> <span class="pl-c1">0</span><span class="pl-k">,</span> <span class="pl-c1">0</span>]<span class="pl-k">;</span>
+assert_eq<span class="pl-k">!</span>(<span class="pl-k">-</span><span class="pl-c1">127</span><span class="pl-k">.</span><span class="pl-c1">5</span><span class="pl-k">,</span> <span class="pl-c1">read_f32</span>(<span class="pl-k">&amp;</span>v[<span class="pl-c1">0</span><span class="pl-k">..</span><span class="pl-c1">4</span>]<span class="pl-k">,</span> <span class="pl-k">ByteOrder</span><span class="pl-k">::</span><span class="pl-k">BigEndian</span>)<span class="pl-k">.</span><span class="pl-c1">unwrap</span>())<span class="pl-k">;</span></pre></div>
 
-<p>let v = vec![194, 255, 0, 0];
-assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
-```</p>
 </div><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr class=' module-item'>
@@ -89,10 +80,10 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
-                        <td><a class='enum' href='enum.Error.html'
-                               title='endianness::Error'>Error</a></td>
+                        <td><a class='enum' href='enum.EndiannessError.html'
+                               title='endianness::EndiannessError'>EndiannessError</a></td>
                         <td class='docblock short'>
                              <p>The error type.</p>
 
@@ -108,7 +99,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.read_f64.html'
                                title='endianness::read_f64'>read_f64</a></td>
@@ -117,7 +108,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.read_i16.html'
                                title='endianness::read_i16'>read_i16</a></td>
@@ -126,7 +117,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.read_i32.html'
                                title='endianness::read_i32'>read_i32</a></td>
@@ -135,7 +126,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.read_i64.html'
                                title='endianness::read_i64'>read_i64</a></td>
@@ -144,7 +135,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.read_u16.html'
                                title='endianness::read_u16'>read_u16</a></td>
@@ -153,7 +144,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.read_u32.html'
                                title='endianness::read_u32'>read_u32</a></td>
@@ -162,7 +153,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
 
                         </td>
                     </tr>
-                
+
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.read_u64.html'
                                title='endianness::read_u64'>read_u64</a></td>
@@ -174,8 +165,8 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
                 </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
                     <tr class=' module-item'>
-                        <td><a class='type' href='type.Result.html'
-                               title='endianness::Result'>Result</a></td>
+                        <td><a class='type' href='type.EndiannessResult.html'
+                               title='endianness::EndiannessResult'>EndiannessResult</a></td>
                         <td class='docblock short'>
                              <p>Result type alias that fixes Error parameter.</p>
 
@@ -230,7 +221,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
         </div>
     </aside>
 
-    
+
 
     <script>
         window.rootPath = "../";
@@ -239,7 +230,7 @@ assert_eq!(-127.5, read_f32(&amp;v[0..4], ByteOrder::BigEndian).unwrap());
     </script>
     <script src="../jquery.js"></script>
     <script src="../main.js"></script>
-    
+
     <script defer src="../search-index.js"></script>
 </body>
 </html>
